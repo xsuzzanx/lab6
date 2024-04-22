@@ -16,5 +16,20 @@ class User{
         ];
     }
 }
+
+User.prototype.borrowBook = function(book) {
+    this.borrowedBooks.push(book);
+};
+
+User.prototype.returnBook = function(bookId) {
+    const index = this.borrowedBooks.findIndex(book => book.id === bookId);
+    if (index !== -1) {
+        this.borrowedBooks.splice(index, 1);
+    }
+};
+
+User.prototype.findBorrowedBookById = function(bookId) {
+    return this.borrowedBooks.some(book => book.id === bookId);
+};
+
  module.exports =User;
- 
