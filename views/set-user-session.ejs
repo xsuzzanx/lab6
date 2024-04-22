@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang = "en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title><%= title %></title>
+        <link rel="stylesheet" href="/css/styles.css">
+    </head>
+    <body>
+        <h1>Set User</h1>
+        <% if(users.length > 0 ){ %>
+            <div>
+                <label for="userId">User</label>
+                <select name="userId">
+                    <% users.forEach(user=>{%>
+                    <option value="<%= user.id %>"><%= user.login %></option>
+                    <%}); %>
+                </select>
+                <button formmethod="post" formaction="/user/set">Set user</button>
+            </div>
+            <%} else { %>
+                <p>No user has been found.</p>
+            <% } %>
+            <p> The page you are looking for does not exist.</p>
+            <a href="/">Back to Hme</a> 
+    </body>
+</html>
